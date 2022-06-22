@@ -1,13 +1,13 @@
 package test;
 
-import businesslogic.BaseTest;
+import businesslogic.PkszBaseTest;
 import businesslogic.UserActions;
 import businesslogic.Validations;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-public class StructuredScriptingTest extends BaseTest {
+public class StructuredScriptingTest extends PkszBaseTest {
 
     UserActions action;
     Validations validate;
