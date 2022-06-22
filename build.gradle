@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'org.peterfoldhazi'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+dependencies {
+    // JUnit
+    implementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    implementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
+    // Selenium base framework and driver manager
+    implementation("org.seleniumhq.selenium:selenium-java:4.2.2")
+    implementation("io.github.bonigarcia:webdrivermanager:5.2.0")
+
+    // Logger
+    implementation("org.apache.logging.log4j:log4j-core:2.17.2")
+    implementation("org.apache.logging.log4j:log4j-api:2.17.2")
+}
+test {
+    useJUnitPlatform()
+}
