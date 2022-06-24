@@ -3,7 +3,7 @@ package businesslogic;
 import core.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 
-public class PkszBaseTest extends BaseTest {
+public class PkszBaseTest extends core.BaseTest {
 
     @Override
     @BeforeEach

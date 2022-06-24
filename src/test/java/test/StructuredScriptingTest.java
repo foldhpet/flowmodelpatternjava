@@ -1,8 +1,8 @@
 package test;
 
 import businesslogic.PkszBaseTest;
-import businesslogic.UserActions;
 import businesslogic.Validations;
+import core.UserActions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
