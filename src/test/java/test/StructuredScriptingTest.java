@@ -2,6 +2,8 @@ package test;
 
 import businesslogic.PkszBaseTest;
 import businesslogic.Validations;
+import businesslogic.flowmodels.ArticleFlow;
+import businesslogic.flowmodels.MenuFlow;
 import businesslogic.pagemodels.ArticlePage;
 import businesslogic.pagemodels.ArticlesPage;
 import businesslogic.pagemodels.NewsPage;
@@ -11,13 +13,21 @@ import org.openqa.selenium.*;
 
 public class StructuredScriptingTest extends PkszBaseTest {
 
-    UserActions action;
-    Validations validate;
+    @Test
+    public void BokszTestUsingFlowModels() {
+        MenuFlow menuFlow = new MenuFlow(driver);
+        ArticleFlow articleFlow = new ArticleFlow(driver);
+
+        menuFlow.clickCikkekMenuButton();
+        articleFlow.openSztorikSubPage();
+        articleFlow.searchForArticle("Rocky");
+        articleFlow.openFirstArticle();
+    }
 
     @Test
     public void BokszTestUsingPageModels() {
-        action = new UserActions();
-        validate = new Validations();
+        UserActions action = new UserActions();
+        Validations validate = new Validations();
         NewsPage newsPage = new NewsPage(driver);
         ArticlesPage articlesPage = new ArticlesPage(driver);
         ArticlePage articlePage = new ArticlePage(driver);
@@ -44,8 +54,8 @@ public class StructuredScriptingTest extends PkszBaseTest {
 
     @Test
     public void BokszTestUsingCoreFunctionality() {
-        action = new UserActions();
-        validate = new Validations();
+        UserActions action = new UserActions();
+        Validations validate = new Validations();
         NewsPage newsPage = new NewsPage(driver);
         ArticlesPage articlesPage = new ArticlesPage(driver);
 
@@ -69,16 +79,8 @@ public class StructuredScriptingTest extends PkszBaseTest {
         validate.elementIsDisplayedOnPage(driver.findElement(By.xpath("/html/body/div[3]/div[2]/h1")));
 
         action.click(driver.findElement(By.xpath("/html/body/div[3]/div[2]/p[3]/span[1]/a")));
-        validate.elementIsDisplayedOnPage(
-                driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[1]/h1")),
-                "article title");
-        validate.elementIsDisplayedOnPage(
-                driver.findElement(By.className("hir_datum")),
-                "article date"
-        );
-        validate.elementIsDisplayedOnPage(
-                driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[1]/div[1]/div/span")),
-                "article author"
-        );
+        validate.elementIsDisplayedOnPage(driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[1]/h1")),"article title");
+        validate.elementIsDisplayedOnPage(driver.findElement(By.className("hir_datum")),"article date");
+        validate.elementIsDisplayedOnPage(driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[1]/div[1]/div/span")),"article author");
     }
 }
