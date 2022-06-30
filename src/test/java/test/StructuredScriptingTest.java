@@ -59,10 +59,8 @@ public class StructuredScriptingTest extends PkszBaseTest {
         NewsPage newsPage = new NewsPage(driver);
         ArticlesPage articlesPage = new ArticlesPage(driver);
 
-        //TODO: visszaállítani page model előttire
-        action.click(newsPage.cikkekMenuButton());
-        //TODO: visszaállítani page model előttire
-        validate.text("Cikkek", articlesPage.pageHeader());
+        action.click(driver.findElement(By.linkText("Cikkek")));
+        validate.text("Cikkek", driver.findElement(By.tagName("h1")));
 
         action.click(driver.findElement(By.partialLinkText("Sztorik")));
         validate.textIsPresentOnPage(driver, "Sztorik");
@@ -76,10 +74,10 @@ public class StructuredScriptingTest extends PkszBaseTest {
         } catch (ElementNotInteractableException e) {
             action.click(driver.findElement(By.xpath("/html/body/div[3]/div[2]/form/input[3]")));
         }
-        validate.elementIsDisplayedOnPage(driver.findElement(By.xpath("/html/body/div[3]/div[2]/h1")));
+        validate.elementIsDisplayedOnPage(driver.findElement(By.tagName("h1")));
 
         action.click(driver.findElement(By.xpath("/html/body/div[3]/div[2]/p[3]/span[1]/a")));
-        validate.elementIsDisplayedOnPage(driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[1]/h1")),"article title");
+        validate.elementIsDisplayedOnPage(driver.findElement(By.tagName("h1")),"article title");
         validate.elementIsDisplayedOnPage(driver.findElement(By.className("hir_datum")),"article date");
         validate.elementIsDisplayedOnPage(driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[1]/div[1]/div/span")),"article author");
     }

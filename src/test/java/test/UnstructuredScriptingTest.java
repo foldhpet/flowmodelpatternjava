@@ -65,7 +65,7 @@ public class UnstructuredScriptingTest {
         driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/ul/li[4]/a")).click();
 
         driver.findElement(By.linkText("Cikkek")).click();
-        element = driver.findElement(By.id("content")).findElement(By.tagName("h1"));
+        element = driver.findElement(By.tagName("h1"));
         LogUnstructured.debug("Expected text: Cikkek");
         LogUnstructured.debug("Actual text: " + element.getText());
         Assertions.assertEquals("Cikkek", element.getText());
@@ -83,13 +83,13 @@ public class UnstructuredScriptingTest {
         } catch (ElementNotInteractableException e) {
             driver.findElement(By.xpath("/html/body/div[3]/div[2]/form/input[3]")).click();
         }
-        element = driver.findElement(By.xpath("/html/body/div[3]/div[2]/h1"));
+        element = driver.findElement(By.tagName("h1"));
         LogUnstructured.debug("Validating whether '" + element.getText() + "' is visible on the page.");
         Assertions.assertTrue(element.isDisplayed());
 
         driver.findElement(By.xpath("/html/body/div[3]/div[2]/p[3]/span[1]/a")).click();
         LogUnstructured.debug("Validating whether 'article title' is visible on the page.");
-        Assertions.assertTrue(driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[1]/h1")).isDisplayed());
+        Assertions.assertTrue(driver.findElement(By.tagName("h1")).isDisplayed());
         LogUnstructured.debug("Validating whether 'article date' is visible on the page.");
         Assertions.assertTrue(driver.findElement(By.className("hir_datum")).isDisplayed());
         LogUnstructured.debug("Validating whether 'article author' is visible on the page.");
