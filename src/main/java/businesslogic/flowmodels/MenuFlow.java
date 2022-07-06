@@ -13,6 +13,7 @@ public class MenuFlow extends UserActions {
     ArticlesPage articlesPage;
 
     public MenuFlow(WebDriver driver) {
+        validate = new Validations();
         newsPage = new NewsPage(driver);
         articlesPage = new ArticlesPage(driver);
     }

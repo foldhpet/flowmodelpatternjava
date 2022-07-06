@@ -16,6 +16,7 @@ public class ArticleFlow extends UserActions {
 
     public ArticleFlow(WebDriver driver) {
         this.driver = driver;
+        validate = new Validations();
         articlesPage = new ArticlesPage(this.driver);
         articlePage = new ArticlePage(this.driver);
     }
